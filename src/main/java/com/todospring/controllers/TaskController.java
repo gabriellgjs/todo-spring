@@ -28,4 +28,13 @@ public class TaskController {
     public ResponseEntity<List<Task>> getTasks () {
         return new ResponseEntity<>(this.taskService.getAllTasks(), HttpStatus.OK);
     }
+@   GetMapping("/{id}")
+    public Task getTaskById(@PathVariable Long id) {
+        return  this.taskService.getTaskById(id).orElse(null);
+    }
+
+    @PatchMapping("/{id}")
+    public Task toggleStatus(@PathVariable Long id) {
+        return this.taskService.uptadeStatusTask(id);
+    }
 }
