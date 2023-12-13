@@ -30,7 +30,5 @@ public class Task {
         this.status = data.status();
     }
 
-    public Task() {
-
-    }
+    public Task() {}
 }

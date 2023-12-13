@@ -5,6 +5,7 @@ import com.todospring.domain.task.TaskStatus;
 import com.todospring.dtos.TaskDTO;
 import com.todospring.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,11 +29,10 @@ public class TaskService {
     }
 
     public Optional<Task> getTaskById(Long id) {
-
         return this.repository.findById(id);
     }
 
-    public Task uptadeStatusTask(Long id) {
+    public Task toggleStatusTask(Long id) {
         Task task = this.repository.findTaskById(id);
 
         task.setStatus(task.getStatus().equals(TaskStatus.ACTIVE)? TaskStatus.COMPLETED : TaskStatus.ACTIVE);
@@ -40,5 +40,20 @@ public class TaskService {
         this.repository.save(task);
 
         return task;
+    }
+
+    public Task changeDescriptionTask(Long id, String description) {
+        Task task = this.repository.findTaskById(id);
+
+        System.out.println(description);
+        task.setDescription(description);
+
+        this.repository.save(task);
+
+        return task;
+    }
+
+    public void deleteTask(Long id) {
+        this.repository.deleteById(id);
     }
 }

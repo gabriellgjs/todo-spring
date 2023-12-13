@@ -28,13 +28,25 @@ public class TaskController {
     public ResponseEntity<List<Task>> getTasks () {
         return new ResponseEntity<>(this.taskService.getAllTasks(), HttpStatus.OK);
     }
-@   GetMapping("/{id}")
+    @GetMapping("/{id}")
     public Task getTaskById(@PathVariable Long id) {
-        return  this.taskService.getTaskById(id).orElse(null);
+        return this.taskService.getTaskById(id).orElse(null);
     }
 
     @PatchMapping("/{id}")
     public Task toggleStatus(@PathVariable Long id) {
-        return this.taskService.uptadeStatusTask(id);
+        return this.taskService.toggleStatusTask(id);
+    }
+
+    @PutMapping("/{id}")
+    public Task changeDescription(@PathVariable Long id, @RequestBody TaskDTO newDescription) {
+        return this.taskService.changeDescriptionTask(id, newDescription.description());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteTask(@PathVariable Long id) {
+        this.taskService.deleteTask(id);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
