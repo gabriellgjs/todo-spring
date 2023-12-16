@@ -2,5 +2,5 @@
 
 set -e
 
-java -jar ./target/todo-spring-0.0.1-SNAPSHOT.jar
+mvn spring-boot:run
 
