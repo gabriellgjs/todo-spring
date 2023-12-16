@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  todo-spring:
+    container_name: todo-spring
+    build:
+      context: ../
+      dockerfile: .docker/java/Dockerfile
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    working_dir: /var/www/todo-spring
+    volumes:
+      - ../:/var/www/todo-spring
+    networks:
+      - spring-network-api
+    tty: true
+networks:
+  spring-network-api:
+    name: spring-network

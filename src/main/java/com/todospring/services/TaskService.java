@@ -44,7 +44,6 @@ public class TaskService {
     public Task changeDescriptionTask(Long id, String description) {
         Task task = this.repository.findTaskById(id);
 
-        System.out.println(description);
         task.setDescription(description);
 
         this.repository.save(task);
