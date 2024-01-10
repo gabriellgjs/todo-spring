@@ -1,5 +1,5 @@
-# To-do (README.md EM CONSTRUÇÃO)
-
+# Todo Spring
+ 
 Projeto simples para implementação de uma lista de tarefas, com foco em desenvolver a minha primeira aplicação em Spring
 
 ## 🛠 Tecnologias
